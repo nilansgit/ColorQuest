@@ -156,48 +156,54 @@
 	  
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div class="saturation-value-area" style="background-color: {backgroundColor};" on:mousemove= {startDragging} >
-		  	<div class="picker-indicator" style="left: {pickerX}%; top: {pickerY}%;"></div>
+		  	<div class="picker-indicator" style="left: {pickerX}%; top: {pickerY}%; background-color : {showcolor}"></div>
 		</div>
 
 		<div class="colorshow" style="height: 50px; width: 100%; background-color: {showcolor};"></div>
 
 		<!-- Inputs for color formats -->
 		<div class="color-inputs">
-			<label for="HEX">hex</label>
-			<input type="text" id="HEX" placeholder="HEX" bind:value ={hex} on:input={onHexInput} />
-		  
-			<!-- <input type="text" placeholder="RGB" bind:value ={rgbB} on:input={onRgbInput} /> -->
-			<div class="nothex">
+			<div class="code">
+				<label for="HEX">HexCode</label>
+				<input type="text" id="HEX" placeholder="HEX" bind:value ={hex} on:input={onHexInput} style="width: 125px;" />
+			</div>
+			
+			<div class="code">
 				<label for="HEX">RGB</label>
-				<input type="number" placeholder="RGB" bind:value={rgbR} on:input={onRgbInput}  />
-				<input type="number" placeholder="RGB" bind:value={rgbG} on:input={onRgbInput}  />
-				<input type="number" placeholder="RGB" bind:value={rgbB} on:input={onRgbInput}  />
+				<input type="number" placeholder="RGB" bind:value={rgbR} on:input={onRgbInput} style="width:75px;"/>
+				<input type="number" placeholder="RGB" bind:value={rgbG} on:input={onRgbInput} style="width:75px;"/>
+				<input type="number" placeholder="RGB" bind:value={rgbB} on:input={onRgbInput} style="width:75px;"/>
 			</div>
 		</div>
 
 		<div class="color-inputs">
-			<div class="nothex">
-				<label for="HEX">cmyk</label>
+			
+		    
+			<div class="code">
+				<label for="HEX">HSV</label>
+				<input type="number" bind:value={hslH} on:input={onHslInput} min="0" max="360" style="width:75px;"/>
+  				<input type="number" bind:value={hslS} on:input={onHslInput} min="0" max="100" style="width:75px;"/>
+  				<input type="number" bind:value={hslL} on:input={onHslInput} min="0" max="100" style="width:75px;"/>
+			</div>
+
+			<div class="code"> 
+				<label for="HEX">HSL</label>
+				<input type="number" bind:value={hue} on:input={onHsvInput} min="0" max="360" style="width:80x;"/>
+  				<input type="number" bind:value={saturation} on:input={onHsvInput} min="0" max="100" style="width:80px;"/>
+  				<input type="number" bind:value={value} on:input={onHsvInput} min="0" max="100" style="width:80px;"/>
+			</div>
+		</div>
+
+		<div class="color-inputs1">
+			<div class="code1">
+				<label for = "hex">CMYK</label>
 				<input type="number" bind:value={cmykC} on:input={onCmykInput} min="0" max="100" />
   				<input type="number" bind:value={cmykM} on:input={onCmykInput} min="0" max="100" />
   				<input type="number" bind:value={cmykY} on:input={onCmykInput} min="0" max="100" />
  				<input type="number" bind:value={cmykK} on:input={onCmykInput} min="0" max="100" />
 			</div>
-		    
-			<div class="nothex">
-				<label for="HEX">hsl</label>
-				<input type="number" bind:value={hslH} on:input={onHslInput} min="0" max="360" />
-  				<input type="number" bind:value={hslS} on:input={onHslInput} min="0" max="100" />
-  				<input type="number" bind:value={hslL} on:input={onHslInput} min="0" max="100" />
-			</div>
-
-			<div class="nothex"> 
-				<label for="HEX">hsv</label>
-				<input type="number" bind:value={hue} on:input={onHsvInput} min="0" max="360" />
-  				<input type="number" bind:value={saturation} on:input={onHsvInput} min="0" max="100" />
-  				<input type="number" bind:value={value} on:input={onHsvInput} min="0" max="100" />
-			</div>
 		</div>
+
 	</div>
 </main>
 
@@ -209,28 +215,60 @@
 	  display: flex;
 	  flex-direction: column;
 	  gap:10px;
-	  width: 50%;
+	  width: 75%;
 	  height: 100%;
 	  margin: 0 auto;
 	}
 	.hue-slider {
 	  width: 100%;
+	  border: 2px solid black;
+	  
 	}
 	.saturation-value-area {
 	  width: 100%;
-	  height: 135px;
+	  height: 200px;
 	  background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0)), linear-gradient(to top, #000, rgba(0, 0, 0, 0));
 	  position: relative;
-      border: 1px solid grey;
+      border: 3px solid black;
       /* cursor: crosshair; */
 	  border-radius: 2%;
 	}
 
+	.colorshow{
+		border: 3px solid black;
+		border-radius: 2%;
+	}
 
 	.color-inputs {
-	  display: flex;
-	  justify-content: space-between;
+		width: 100%;
+		height: 50%;
+		display: flex;
+		justify-content: space-around;
 	}
+
+	.code{
+		width: 40%;
+		height: 30%;
+		font-size: 28px;
+		font-weight: 700;
+		color: black;
+		border: 2px solid black;
+		border-radius: 5%;
+	}
+
+
+	.color-inputs1{
+		width: 70%;
+		border: 2px solid black;
+		display: flex;
+		font-size: 28px;
+		font-weight: 700;
+		color: black;
+		border-radius: 5%;
+		justify-content: space-around;
+		margin: 0 auto;
+	}
+
 	input {
 	  width: 100px;
 	  padding: 5px;
@@ -279,24 +317,12 @@
 
   .picker-indicator {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 2px solid #fff;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-    background-color: #000;
     pointer-events: none;
   }
-
-
-  .nothex  {
-	display: inline-block;
-	width: 100%;
-  }
-
-  .nothex label, input {
-	width: 50%;
-  }
-
 
   </style>

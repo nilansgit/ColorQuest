@@ -3,17 +3,25 @@
 </script>
   
 <main>
-	<h1>Color Picker</h1>
+	<h1>COLOR PICKER</h1>
 	<Colorpicker/>
 </main>
   
 <style>
 	main {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  height: 100%;
-	  width: 100%;
+		text-align: center;
+	    height: 93%;
+	    width: 80%;
+		border: 6px solid black;
+		margin: 25px;
+		position: absolute;
+		left: 125px;
+		border-radius: 35%;
+		background-color:blanchedalmond ;
+		font-size: 15px;
+		font-weight: bolder;
+
 	}
+
 </style>
   
