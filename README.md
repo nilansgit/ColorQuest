@@ -24,7 +24,7 @@ git clone https://github.com/nilansgit/ColorQuest_Nilans.git
 ```
 Install the dependencies...
 ```bash
-cd ColorQuest_Nilans
+cd ColorQuest
 npm install
 ```
 
